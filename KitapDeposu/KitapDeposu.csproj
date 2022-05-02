@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data.EntityFramework, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Web, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,25 +49,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bilgi_Giris_Musteri.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Bilgi_Giris_Musteri.Designer.cs">
-      <DependentUpon>Bilgi_Giris_Musteri.cs</DependentUpon>
-    </Compile>
     <Compile Include="Giris.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Giris.Designer.cs">
       <DependentUpon>Giris.cs</DependentUpon>
     </Compile>
+    <Compile Include="KitapEkle.cs" />
+    <Compile Include="KitapEkleme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KitapEkleme.Designer.cs">
+      <DependentUpon>KitapEkleme.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Bilgi_Giris_Musteri.resx">
-      <DependentUpon>Bilgi_Giris_Musteri.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="SatisEkran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SatisEkran.Designer.cs">
+      <DependentUpon>SatisEkran.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YetkiliEkran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YetkiliEkran.Designer.cs">
+      <DependentUpon>YetkiliEkran.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Giris.resx">
       <DependentUpon>Giris.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KitapEkleme.resx">
+      <DependentUpon>KitapEkleme.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -75,6 +91,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SatisEkran.resx">
+      <DependentUpon>SatisEkran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YetkiliEkran.resx">
+      <DependentUpon>YetkiliEkran.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

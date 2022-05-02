@@ -31,7 +31,6 @@ namespace KitapDeposu
         {
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -42,6 +41,7 @@ namespace KitapDeposu
             this.button1.TabIndex = 0;
             this.button1.Text = "Müşteri Girişi";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -51,26 +51,18 @@ namespace KitapDeposu
             this.button2.TabIndex = 0;
             this.button2.Text = "Yetkili Girişi";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(76, 183);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(137, 50);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Müşteri Kayıt";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Giris
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(308, 269);
+            this.ClientSize = new System.Drawing.Size(281, 197);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Name = "Giris";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Giris_Load);
             this.ResumeLayout(false);
 
         }
@@ -79,7 +71,6 @@ namespace KitapDeposu
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
     }
 }
 
