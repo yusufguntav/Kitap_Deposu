@@ -55,6 +55,12 @@
     <Compile Include="Giris.Designer.cs">
       <DependentUpon>Giris.cs</DependentUpon>
     </Compile>
+    <Compile Include="KitapDüzenleme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KitapDüzenleme.Designer.cs">
+      <DependentUpon>KitapDüzenleme.cs</DependentUpon>
+    </Compile>
     <Compile Include="KitapEkle.cs" />
     <Compile Include="KitapEkleme.cs">
       <SubType>Form</SubType>
@@ -78,6 +84,9 @@
     </Compile>
     <EmbeddedResource Include="Giris.resx">
       <DependentUpon>Giris.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KitapDüzenleme.resx">
+      <DependentUpon>KitapDüzenleme.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KitapEkleme.resx">
       <DependentUpon>KitapEkleme.cs</DependentUpon>

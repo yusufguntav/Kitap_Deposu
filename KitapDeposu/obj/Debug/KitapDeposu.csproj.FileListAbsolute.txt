@@ -41,3 +41,4 @@ C:\Users\YUSUF\Desktop\NTP_Proje\KitapDeposu\KitapDeposu\bin\Debug\MySql.Web.xml
 C:\Users\YUSUF\Desktop\NTP_Proje\KitapDeposu\KitapDeposu\obj\Debug\KitapDeposu.exe.config
 C:\Users\YUSUF\Desktop\NTP_Proje\KitapDeposu\KitapDeposu\obj\Debug\KitapDeposu.csproj.CopyComplete
 C:\Users\YUSUF\Desktop\NTP_Proje\KitapDeposu\KitapDeposu\obj\Debug\KitapDeposu.KitapEkleme.resources
+C:\Users\YUSUF\Desktop\NTP_Proje\KitapDeposu\KitapDeposu\obj\Debug\KitapDeposu.KitapDüzenleme.resources
