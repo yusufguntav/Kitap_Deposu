@@ -26,11 +26,15 @@ namespace KitapDeposu
         private void button1_Click(object sender, EventArgs e)
         {
             KitapEkleme KE = new KitapEkleme();
-            KE.ShowDialog();
+            if (KE.ShowDialog() == DialogResult.Cancel)
+            {
+                dataGridView1.Rows.Clear();
+                TabloYukle();
+            }
+
 
         }
-
-        private void YetkiliEkran_Load(object sender, EventArgs e)
+        private void TabloYukle()
         {
             try
             {
@@ -47,12 +51,13 @@ namespace KitapDeposu
                 MySqlConnection MSConnection = new MySqlConnection("server=localhost;user id=root;database=kitap_deposu");
                 MSConnection.Open();
 
-                MySqlCommand Command = new MySqlCommand("SELECT Kitap_Adı, Kitap_Sayfa, Kitap_Yazarı, Kitap_Stok, Kitap_Bilgi,Kitap_Fiyat FROM kitaplar", MSConnection);
+                MySqlCommand Command = new MySqlCommand("SELECT Kitap_Adi, Kitap_Sayfa, Kitap_Yazari, Kitap_Stok, Kitap_Bilgi,Kitap_Fiyat FROM kitaplar", MSConnection);
                 var kitap = Command.ExecuteReader();
                 while (kitap.Read())
                 {
                     dataGridView1.Rows.Add(kitap[0], kitap[2], kitap[1], kitap[5], kitap[3], kitap[4]);
                 }
+                MSConnection.Close();
 
             }
             catch (Exception ex)
@@ -61,18 +66,37 @@ namespace KitapDeposu
             }
         }
 
+        private void YetkiliEkran_Load(object sender, EventArgs e)
+        {
+
+            TabloYukle();
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
             KitapDüzenleme KD = new KitapDüzenleme();
-            KD.ShowDialog();
+            if (KD.ShowDialog() == DialogResult.Cancel)
+            {
+                dataGridView1.Rows.Clear();
+                TabloYukle();
+
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Giris grs = new Giris();
-            this.Hide();
-            grs.ShowDialog();
-            this.Close();
+            SifreDuzenle SD = new SifreDuzenle();
+            SD.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AktifSiparisler AS = new AktifSiparisler();
+            if (AS.ShowDialog() == DialogResult.Cancel)
+            {
+                dataGridView1.Rows.Clear();
+                TabloYukle();
+            }
         }
     }
 }

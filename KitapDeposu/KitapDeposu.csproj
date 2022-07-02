@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AktifSiparisler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AktifSiparisler.Designer.cs">
+      <DependentUpon>AktifSiparisler.cs</DependentUpon>
+    </Compile>
     <Compile Include="Giris.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,12 +82,27 @@
     <Compile Include="SatisEkran.Designer.cs">
       <DependentUpon>SatisEkran.cs</DependentUpon>
     </Compile>
+    <Compile Include="SifreDuzenle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SifreDuzenle.Designer.cs">
+      <DependentUpon>SifreDuzenle.cs</DependentUpon>
+    </Compile>
     <Compile Include="YetkiliEkran.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="YetkiliEkran.Designer.cs">
       <DependentUpon>YetkiliEkran.cs</DependentUpon>
     </Compile>
+    <Compile Include="YetkiliKontrol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YetkiliKontrol.Designer.cs">
+      <DependentUpon>YetkiliKontrol.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AktifSiparisler.resx">
+      <DependentUpon>AktifSiparisler.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Giris.resx">
       <DependentUpon>Giris.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,8 +124,14 @@
     <EmbeddedResource Include="SatisEkran.resx">
       <DependentUpon>SatisEkran.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SifreDuzenle.resx">
+      <DependentUpon>SifreDuzenle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="YetkiliEkran.resx">
       <DependentUpon>YetkiliEkran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YetkiliKontrol.resx">
+      <DependentUpon>YetkiliKontrol.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

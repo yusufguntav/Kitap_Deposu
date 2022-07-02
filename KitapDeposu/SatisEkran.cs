@@ -32,11 +32,11 @@ namespace KitapDeposu
 
             try
             {
-               
+
                 MySqlConnection MSConnection = new MySqlConnection("server=localhost;user id=root;database=kitap_deposu");
                 MSConnection.Open();
 
-                MySqlCommand Command = new MySqlCommand("SELECT Kitap_Adı, Kitap_Sayfa, Kitap_Yazarı, Kitap_Stok, Kitap_Bilgi,Kitap_Fiyat FROM kitaplar", MSConnection);
+                MySqlCommand Command = new MySqlCommand("SELECT Kitap_Adi, Kitap_Sayfa, Kitap_Yazari, Kitap_Stok, Kitap_Bilgi,Kitap_Fiyat FROM kitaplar", MSConnection);
                 var kitap = Command.ExecuteReader();
                 while (kitap.Read())
                 {
@@ -65,7 +65,7 @@ namespace KitapDeposu
                     MySqlConnection MSConnection = new MySqlConnection("server=localhost;user id=root;database=kitap_deposu");
                     MSConnection.Open();
 
-                    MySqlCommand Command = new MySqlCommand("SELECT Kitap_Adı, Kitap_Sayfa, Kitap_Yazarı, Kitap_Stok, Kitap_Bilgi,Kitap_Fiyat FROM kitaplar", MSConnection);
+                    MySqlCommand Command = new MySqlCommand("SELECT Kitap_Adi, Kitap_Sayfa, Kitap_Yazari, Kitap_Stok, Kitap_Bilgi,Kitap_Fiyat FROM kitaplar", MSConnection);
                     var kitap = Command.ExecuteReader();
                     while (kitap.Read())
                     {
@@ -84,7 +84,7 @@ namespace KitapDeposu
                     MySqlConnection MSConnection = new MySqlConnection("server=localhost;user id=root;database=kitap_deposu");
                     MSConnection.Open();
 
-                    MySqlCommand Command = new MySqlCommand("SELECT Kitap_Adı, Kitap_Sayfa, Kitap_Yazarı, Kitap_Stok, Kitap_Bilgi,Kitap_Fiyat FROM kitaplar WHERE Kitap_Adı LIKE'%" + textBox1.Text + "%'", MSConnection);
+                    MySqlCommand Command = new MySqlCommand("SELECT Kitap_Adi, Kitap_Sayfa, Kitap_Yazari, Kitap_Stok, Kitap_Bilgi,Kitap_Fiyat FROM kitaplar WHERE Kitap_Adi LIKE'%" + textBox1.Text + "%'", MSConnection);
                     var kitap = Command.ExecuteReader();
                     kitap.Read();
 
@@ -126,15 +126,20 @@ namespace KitapDeposu
             {
                 if (listBox1.Items.Count != 0)
                 {
+                    string siparisimiz = "";
                     for (int i = 0; i < listBox1.Items.Count; i++)
                     {
                         string[] kitap = listBox1.Items[i].ToString().Split('-');
 
+                        siparisimiz += "Kitap Adı: \"" + kitap[0] + "\" ";
+                        siparisimiz += "Kitap Yazarı: \"" + kitap[1] + "\" ";
+                        siparisimiz += "Alınan Adet: \"" + kitap[2] + "\"\n";
+
                         MySqlConnection connection = new MySqlConnection("server=localhost;user id=root;database=kitap_deposu");
                         connection.Open();
                         // Stok Durumuna Bakma
-                        MySqlCommand Command = new MySqlCommand("SELECT  Kitap_Stok FROM kitaplar WHERE Kitap_Adı ='" + kitap[0] +
-                            "' and Kitap_Yazarı='" + kitap[1] + "'", connection);
+                        MySqlCommand Command = new MySqlCommand("SELECT  Kitap_Stok FROM kitaplar WHERE Kitap_Adi ='" + kitap[0] +
+                            "' and Kitap_Yazari='" + kitap[1] + "'", connection);
                         var stok = Command.ExecuteReader();
                         stok.Read();
                         int Stok = Convert.ToInt32(stok[0]);
@@ -143,15 +148,35 @@ namespace KitapDeposu
 
                         // UPDATE
                         connection.Open();
-                        Command = new MySqlCommand("UPDATE kitaplar SET Kitap_Stok=" + (Stok - Convert.ToInt32(kitap[2])) + " WHERE Kitap_Adı ='" + kitap[0] +
-                            "' and Kitap_Yazarı='" + kitap[1] + "'", connection);
+                        Command = new MySqlCommand("UPDATE kitaplar SET Kitap_Stok=" + (Stok - Convert.ToInt32(kitap[2])) + " WHERE Kitap_Adi ='" + kitap[0] +
+                            "' and Kitap_Yazari='" + kitap[1] + "'", connection);
                         Command.ExecuteNonQuery();
+                        connection.Close();
+
+
+
                     }
+
+                    //Aktif Siparis Ekleme
+                    MySqlConnection Connection = new MySqlConnection("server=localhost;user id=root;database=kitap_deposu");
+                    Connection.Open();
+                    MySqlCommand command = new MySqlCommand("INSERT INTO aktif_siparisler(Siparis) VALUES (@Siparisimiz)", Connection);
+                    command.Parameters.AddWithValue("Siparisimiz", siparisimiz);
+                    command.ExecuteNonQuery();
+                    Connection.Close();
+
+                    // Sipariş numarısını kullanıcıya verme
+                    Connection.Open();
+                    command = new MySqlCommand("SELECT MAX(SiparisNumara) FROM aktif_siparisler", Connection);
+                    var numara = command.ExecuteReader();
+                    numara.Read();
+
                     listBox1.Items.Clear();
-                    MessageBox.Show("Siparişiniz Alındı😊 İlgili Çalışanımız Birazdan Siparişinizi Getirecek😊");
+                    MessageBox.Show("Siparişiniz Alındı😊 İlgili Çalışanımız Birazdan Siparişinizi Getirecek😊\nSipariş Numaranız:" + numara[0]);
                     this.Close();
 
-                }else if(listBox1.Items.Count == 0)
+                }
+                else if (listBox1.Items.Count == 0)
                 {
                     MessageBox.Show("Lütfen Sepete Ürün Ekleyin");
                 }
@@ -161,15 +186,6 @@ namespace KitapDeposu
 
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            listBox1.Items.Clear();
-            Giris grs = new Giris();
-            this.Hide();
-            grs.ShowDialog();
-            this.Close();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)

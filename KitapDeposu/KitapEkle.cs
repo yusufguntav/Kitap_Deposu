@@ -79,7 +79,6 @@ namespace KitapDeposu
 
         private void Btn_Click(object sender, EventArgs e)
         {
-            // YAPILACAK!!!!!!!!!!!!!!!!!!!!!!!!!!!
             try
             {
 
@@ -96,8 +95,6 @@ namespace KitapDeposu
                     if (!kitap_adlari.Contains(Kitap_Adı))
                     {
                         SE.SepetEkle(Kitap_Adı, Alım_Adet, Kitap_Yazar);
-                        Debug.Print("Yazdırma Çalıştı");
-
                     }
                     else
                     {
@@ -109,7 +106,6 @@ namespace KitapDeposu
                                 if (Kitap_Adı == kitap_bilgi[0])
                                 {
                                     SE.listBox1.Items[i] = Kitap_Adı + "-" + Kitap_Yazar + "-" + Alım_Adet;
-                                    Debug.Print("Değiştirme Çalıştı");
                                     break;
                                 }
                             }
@@ -120,7 +116,6 @@ namespace KitapDeposu
 
                         }
                     }
-                    Debug.Print(SE.listBox1.Items.Count.ToString()); 
                 }
 
 

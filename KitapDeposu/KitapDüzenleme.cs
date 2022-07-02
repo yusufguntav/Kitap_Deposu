@@ -25,7 +25,7 @@ namespace KitapDeposu
                 MySqlConnection MSConnection = new MySqlConnection("server=localhost;user id=root;database=kitap_deposu");
                 MSConnection.Open();
 
-                MySqlCommand Command = new MySqlCommand("SELECT Kitap_Adı FROM kitaplar", MSConnection);
+                MySqlCommand Command = new MySqlCommand("SELECT Kitap_Adi FROM kitaplar", MSConnection);
                 var kitap_adi = Command.ExecuteReader();
                 while (kitap_adi.Read())
                 {
@@ -49,7 +49,7 @@ namespace KitapDeposu
                 MySqlConnection MSConnection = new MySqlConnection("server=localhost;user id=root;database=kitap_deposu");
                 MSConnection.Open();
 
-                MySqlCommand Command = new MySqlCommand("SELECT Kitap_Adı, Kitap_Sayfa, Kitap_Yazarı, Kitap_Stok, Kitap_Bilgi,Kitap_Fiyat FROM kitaplar WHERE Kitap_Adı='" + comboBox1.SelectedItem + "'", MSConnection);
+                MySqlCommand Command = new MySqlCommand("SELECT Kitap_Adi, Kitap_Sayfa, Kitap_Yazari, Kitap_Stok, Kitap_Bilgi,Kitap_Fiyat FROM kitaplar WHERE Kitap_Adi='" + comboBox1.SelectedItem + "'", MSConnection);
                 var kitap_adi = Command.ExecuteReader();
                 kitap_adi.Read();
                 textBox4.Text = kitap_adi[5].ToString();
@@ -71,11 +71,19 @@ namespace KitapDeposu
         {
             try
             {
-                MySqlConnection MSConnection = new MySqlConnection("server=localhost;user id=root;database=kitap_deposu");
-                MSConnection.Open();
+                if (comboBox1.SelectedItem != null)
+                {
+                    MySqlConnection MSConnection = new MySqlConnection("server=localhost;user id=root;database=kitap_deposu");
+                    MSConnection.Open();
 
-                MySqlCommand Command = new MySqlCommand("UPDATE kitaplar SET Kitap_Adı='" + textBox3.Text + "',Kitap_Sayfa=" + textBox1.Text + ",Kitap_Yazarı='" + textBox2.Text + "',Kitap_Stok=" + numericUpDown1.Value + ",Kitap_Bilgi='" + richTextBox1.Text + "'," + "Kitap_Fiyat = " + textBox4.Text + "  WHERE Kitap_Adı='" + comboBox1.SelectedItem + "'", MSConnection);
-                Command.ExecuteReader();
+                    MySqlCommand Command = new MySqlCommand("UPDATE kitaplar SET Kitap_Adi='" + textBox3.Text + "',Kitap_Sayfa=" + textBox1.Text + ",Kitap_Yazari='" + textBox2.Text + "',Kitap_Stok=" + numericUpDown1.Value + ",Kitap_Bilgi='" + richTextBox1.Text + "'," + "Kitap_Fiyat = " + textBox4.Text + "  WHERE Kitap_Adi='" + comboBox1.SelectedItem + "'", MSConnection);
+                    Command.ExecuteReader();
+                    MessageBox.Show("Değişiklikler Kaydedil!");
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen Kitap Seçin");
+                }
             }
             catch (Exception ex)
             {

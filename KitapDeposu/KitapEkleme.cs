@@ -33,7 +33,7 @@ namespace KitapDeposu
                     MySqlConnection MSConnection = new MySqlConnection("server=localhost;user id=root;database=kitap_deposu");
                     MSConnection.Open();
 
-                    MySqlCommand MSC = new MySqlCommand("INSERT INTO kitaplar(Kitap_Adı, Kitap_Sayfa, Kitap_Yazarı, Kitap_Stok,Kitap_Bilgi,Kitap_Fiyat) VALUES (@KitapAdı,@KitapSayfa,@KitapYazarı,@KitapStok,@KitapBilgi,@KitapFiyat)", MSConnection);
+                    MySqlCommand MSC = new MySqlCommand("INSERT INTO kitaplar(Kitap_Adi, Kitap_Sayfa, Kitap_Yazari, Kitap_Stok,Kitap_Bilgi,Kitap_Fiyat) VALUES (@KitapAdı,@KitapSayfa,@KitapYazarı,@KitapStok,@KitapBilgi,@KitapFiyat)", MSConnection);
 
                     MSC.Parameters.AddWithValue("KitapAdı", textBox3.Text);
                     MSC.Parameters.AddWithValue("KitapSayfa", textBox1.Text);
@@ -42,6 +42,9 @@ namespace KitapDeposu
                     MSC.Parameters.AddWithValue("KitapBilgi", richTextBox1.Text);
                     MSC.Parameters.AddWithValue("KitapFiyat", textBox4.Text);
                     MSC.ExecuteNonQuery();
+
+
+                    MessageBox.Show("Kitap Eklendi!");
                 }
                 else
                 {
