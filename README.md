@@ -1,5 +1,5 @@
 # Kitap_Deposu
-                                                             Basit bir "Kütüphane Yönetme" uygulaması
+Basit bir "Kütüphane Yönetme" uygulaması
 
 Program içerisinde kitap girdisi/çıktısı yapma, kitap bilgisi düzenleme, sipariş verilen kitabı takip etme vb. özellikler mevcut.
 
